@@ -10,10 +10,12 @@ import router  from "./router/index"
 // svg图标
 import SvgIcon from '@/components/SvgIcon'
 
+axios.defaults.withCredentials = true
 const app = createApp(App)
 
 app.config.productionTip = false
 app.config.globalProperties.$axios = axios
+
 
 for (let iconName in ElIconModules) {
     app.component(iconName, ElIconModules[iconName])

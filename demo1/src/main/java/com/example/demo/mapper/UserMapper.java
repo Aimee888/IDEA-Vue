@@ -9,6 +9,6 @@ import java.util.List;
 @Component
 public interface UserMapper {
     //然后做一些数据库的对应操作，这次是查询操作
-    @Select("select * from user")
+    @Select("select user_num,user_account,user_password from user")
     List<User> getUserList();
 }

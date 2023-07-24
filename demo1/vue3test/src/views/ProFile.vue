@@ -4,11 +4,11 @@ export default {
   data() {
     return {
       activeTab: 'userinfo',
-      englishname: '管理员',
-      password: 'password',
-      phone: '17524320042',
-      email: 'aaa.123@foxconn.com',
-      privilege: '管理员',
+      englishname: '',
+      password: '',
+      phone: '',
+      email: '',
+      role: '',
       user: {
         oldPassword: '',
         newPassword: '',
@@ -45,7 +45,25 @@ export default {
       }
     }
   },
+  mounted() {
+    this.getuserdata()
+  },
   methods: {
+    getuserdata() {
+      this.$axios
+          .get('http://localhost:8081/api/Profile')
+          .then(successResponse => {
+            console.log(successResponse.data)
+            this.englishname = successResponse.data.data.user.user_account
+            this.password = successResponse.data.data.user.password
+            this.phone = successResponse.data.data.userProfile.phonenumber
+            this.email = successResponse.data.data.userProfile.email
+            this.role = successResponse.data.data.userProfile.role
+          })
+          .catch(failResponse => {
+            console.log(failResponse)
+          })
+    },
     passwordsubmit() {
 
     },
@@ -88,7 +106,7 @@ export default {
               </li>
               <li class="list-group-item">
                 所属角色
-                <div class="user-item">{{ privilege }}</div>
+                <div class="user-item">{{ role }}</div>
               </li>
             </ul>
           </div>
