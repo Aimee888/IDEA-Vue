@@ -15,7 +15,7 @@
             :default-openeds="state.defaultOpen"
             :default-active='state.currentPath'
         >
-          <el-menu-item index="/ProFile">
+            <el-menu-item index="/Hometest">
             <el-icon><HomeFilled /></el-icon>
             <span><strong>首页</strong></span>
           </el-menu-item>
@@ -25,7 +25,7 @@
               <span><strong>系统管理</strong></span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="2-1"><el-icon><Avatar /></el-icon>角色管理</el-menu-item>
+              <el-menu-item index="/Role"><el-icon><Avatar /></el-icon>角色管理</el-menu-item>
               <el-menu-item index="/AboutTest"><el-icon><QuestionFilled /></el-icon>关于</el-menu-item>
             </el-menu-item-group>
           </el-sub-menu>

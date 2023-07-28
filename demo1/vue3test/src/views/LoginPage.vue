@@ -105,6 +105,7 @@
 
 <script>
 import qs from 'qs'
+import router from '@/router/index.js'
 
 export default {
   name: 'LoginPage',
@@ -151,7 +152,7 @@ export default {
             } else {
               console.log('登录成功')
               console.log(successResponse.data.data.user.user_account)
-              this.$router.push({path: '/JumpTest', query: {param: successResponse.data.data.user.user_account}})
+              router.push({path: '/JumpTest', query: {param: successResponse.data.data.user.user_account}})
             }
           })
           .catch(failResponse => {

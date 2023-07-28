@@ -1,5 +1,6 @@
 <script>
 import {ElMessageBox} from "element-plus";
+import router from "@/router";
 
 export default {
   name: 'HeaderPage',
@@ -25,7 +26,7 @@ export default {
         type: 'warning'
       }).then(() => {
         console.log("退出")
-        this.$router.push({path: '/'})
+        router.push({path: '/'})
       }).catch(() => { });
     }
   }

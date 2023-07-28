@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.*;
+import com.example.demo.service.impl.RoleServiceImpl;
 import com.example.demo.service.impl.UserProfileServiceImpl;
 import com.example.demo.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +21,21 @@ public class UserController {
     private UserServiceImpl userServer;
     @Autowired
     private UserProfileServiceImpl userProfileServer;
+    @Autowired
+    private RoleServiceImpl roleService;
 
     @GetMapping("/users")
     public List<User> getUserList()
     {
         return userServer.getUserList();
+    }
+
+    @GetMapping("/roles")
+    @ResponseBody
+    public ResultVo getRoleList()
+    {
+        List<Role> rolelist = roleService.getRoleList();
+        return new ResultVo(200, "", new RoleVo(rolelist, rolelist.size()));
     }
 
     @GetMapping("/userprofile")
